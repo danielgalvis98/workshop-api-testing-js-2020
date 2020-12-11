@@ -81,4 +81,3 @@ describe('First Api Tests', () => {
         expect(response.header.connection).to.equal('close');
     });
 });
-
