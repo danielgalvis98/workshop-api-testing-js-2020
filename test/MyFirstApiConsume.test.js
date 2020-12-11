@@ -4,9 +4,11 @@ const chai = require('chai');
 
 const { expect } = chai;
 
+const baseUrl = 'https://httpbin.org';
+
 describe('First Api Tests', () => {
   it('Consume GET Service', async () => {
-    const response = await agent.get('https://httpbin.org/ip');
+    const response = await agent.get(`${baseUrl}/ip`);
 
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body).to.have.property('origin');
@@ -19,7 +21,7 @@ describe('First Api Tests', () => {
       city: 'New York'
     };
 
-    const response = await agent.get('https://httpbin.org/get').query(query);
+    const response = await agent.get(`${baseUrl}/get`).query(query);
 
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body.args).to.eql(query);
@@ -32,7 +34,7 @@ describe('First Api Tests', () => {
       city: 'New York'
     };
 
-    const response = await agent.patch('https://httpbin.org/patch').query(query);
+    const response = await agent.patch(`${baseUrl}/patch`).query(query);
 
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body).to.have.property('origin');
@@ -46,7 +48,7 @@ describe('First Api Tests', () => {
       city: 'New York'
     };
 
-    const response = await agent.put('https://httpbin.org/put').query(query);
+    const response = await agent.put(`${baseUrl}/put`).query(query);
 
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body).to.have.property('origin');
@@ -60,7 +62,7 @@ describe('First Api Tests', () => {
       city: 'New York'
     };
 
-    const response = await agent.delete('https://httpbin.org/delete').query(query);
+    const response = await agent.delete(`${baseUrl}/delete`).query(query);
 
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body).to.have.property('origin');
@@ -74,7 +76,7 @@ describe('First Api Tests', () => {
       city: 'New York'
     };
 
-    const response = await agent.head('https://httpbin.org/get').query(query);
+    const response = await agent.head(`${baseUrl}/get`).query(query);
 
     expect(response.status).to.equal(statusCode.OK);
     expect(response.header.connection).to.equal('close');
