@@ -77,6 +77,8 @@ describe('Test GitHub API', () => {
               .set('User-Agent', 'agent');
           });
           it('Should has md5 correct', () => {
+            expect(readmeFile.status).to.equal(statusCode.StatusCodes.OK);
+            expect(readmeFile.header['content-type']).to.equal('text/plain; charset=utf-8');
             expect(md5(readmeFile.body)).to.equal(md5Readme);
           });
         });
