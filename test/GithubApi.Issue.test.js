@@ -8,8 +8,8 @@ const baseUrl = 'https://api.github.com/user';
 const repoName = 'Competitive-Programming';
 
 describe('Test Issues managing with githuh api', () => {
-  describe(`GIVEN the url ${baseUrl} to check logged user information`, () => {
-    describe('WHEN makes a get request to the url', () => {
+  describe(`Given the url ${baseUrl} to check logged user information`, () => {
+    describe('When makes a get request to the url', () => {
       let userResponse;
 
       before(async () => {
