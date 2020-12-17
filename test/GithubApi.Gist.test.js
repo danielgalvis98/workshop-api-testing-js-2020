@@ -51,7 +51,7 @@ describe('Test DELETE on Github API', () => {
               .set('User-Agent', 'agent');
           });
 
-          it.only('Then respond with an existing ressource', () => {
+          it('Then respond with an existing ressource', () => {
             expect(gistResponse.statusCode).to.equal(statusCode.StatusCodes.OK);
             expect(gistResponse.body).to.containSubset(gistFile);
           });
