@@ -33,12 +33,8 @@ describe('Test consume HEAD service on github API', () => {
       let getRequestResponse;
 
       before(async () => {
-        try {
-          getRequestResponse = await agent.get(baseUrl).auth('token', process.env.ACCESS_TOKEN)
-            .set('User-Agent', 'agent');
-        } catch (response) {
-          getRequestResponse = response;
-        }
+        getRequestResponse = await agent.get(baseUrl).auth('token', process.env.ACCESS_TOKEN)
+          .set('User-Agent', 'agent');
       });
 
       it('Should redirect correctly', () => {
