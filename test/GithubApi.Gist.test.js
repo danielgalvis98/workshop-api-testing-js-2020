@@ -12,25 +12,25 @@ const baseUrl = 'https://api.github.com/gists';
 
 describe('Test DELETE on Github API', () => {
   describe(`Given the url ${baseUrl} and user logged in GitHub`, () => {
-    describe(`When Make a post request at ${baseUrl} to create a new gist`, () => {
-      const promiseToSave = `
-        new Promise((resolve) => {
-          setTimeout(() => {
-            resolve('Promise Solved!');
-          }, 250);
-        });
-        `;
+    const promiseToSave = `
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve('Promise Solved!');
+        }, 250);
+      });
+      `;
 
-      const gistFile = {
-        description: 'A simple gist with a little promise',
-        public: true,
-        files: {
-          'myPromise.js': {
-            content: promiseToSave
-          }
+    const gistFile = {
+      description: 'A simple gist with a little promise',
+      public: true,
+      files: {
+        'myPromise.js': {
+          content: promiseToSave
         }
-      };
+      }
+    };
 
+    describe(`When Make a post request at ${baseUrl} to create a new gist`, () => {
       let saveGistResponse;
       before('Making the post request', async () => {
         saveGistResponse = await agent.post(baseUrl, gistFile).auth('token', process.env.ACCESS_TOKEN)
@@ -43,7 +43,7 @@ describe('Test DELETE on Github API', () => {
       });
 
       describe('And now has the URL of the gist created', () => {
-        describe('And when make GET request to get details of the gist', () => {
+        describe('when make GET request to get details of the gist', () => {
           let gistResponse;
 
           before(async () => {
@@ -51,13 +51,13 @@ describe('Test DELETE on Github API', () => {
               .set('User-Agent', 'agent');
           });
 
-          it('Then respond with an existing ressource', () => {
+          it.only('Then respond with an existing ressource', () => {
             expect(gistResponse.statusCode).to.equal(statusCode.StatusCodes.OK);
             expect(gistResponse.body).to.containSubset(gistFile);
           });
         });
 
-        describe('And when make a DELETE request to delete the gist', () => {
+        describe('And make a DELETE request to delete the gist', () => {
           let deleteGistResponse;
 
           before(async () => {
@@ -68,7 +68,7 @@ describe('Test DELETE on Github API', () => {
             expect(deleteGistResponse.statusCode).to.equal(statusCode.StatusCodes.NO_CONTENT);
           });
 
-          describe('And when make another GET request to get details of the gist', () => {
+          describe('And make another GET request to get details of the gist', () => {
             let gistResponse;
 
             before(async () => {
