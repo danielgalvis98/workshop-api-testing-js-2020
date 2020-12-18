@@ -24,6 +24,7 @@
   "homepage": "https://github.com/danielgalvis98/workshop-api-testing-js-2020#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-json-schema": "^1.5.1",
     "chai-subset": "^1.6.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",
